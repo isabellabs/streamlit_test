@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-Col1, Col2 = st.columns([3, 1])
+Col1, Col2 = st.columns([2, 1])
 with Col1:
     st.title("Dataset name")
     st.write("Get to know the generation base: Generation purpose, Medical data used, Generative model used.")
@@ -49,8 +49,9 @@ with Col1:
 
     st.markdown(generative_model, unsafe_allow_html=True)
 
+# -- Medical data representativeness form--
 with Col2:
-    with st.container():
+    with st.container(border=True):
         st.header("Medical data representativeness")
         st.write("How representative is the medical data used for the generation purposes?")
         representativesness = st.radio(
