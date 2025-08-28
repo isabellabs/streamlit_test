@@ -8,10 +8,12 @@ def wide_space_default():
 
 wide_space_default()
 
+st.title("Dataset name")
+st.tabs(["Dataset Information", "Analyse", "Inspect", "Sumarize"])
+
 # -- Dataset information --
 Col1, Col2 = st.columns([2, 1])
 with Col1:
-    st.title("Dataset name")
     st.write("Get to know the generation base: Generation purpose, Medical data used, Generative model used.")
     st.warning('Limitations in the medical dataset used for generation may be reflected in the generated data, resulting in underrepresentation, bias and shortcomings cases.', icon=":material/warning:", width="stretch")
 
@@ -61,21 +63,21 @@ with Col1:
 
 # -- Medical data representativeness form--
 with Col2:
-    with st.container(border=True):
+    with st.form("representativeness_form"):
         st.subheader("Medical data representativeness")
         st.write("How representative is the medical data used for the generation purposes?")
-        representativesness = st.radio(
+        representativeness = st.radio(
             "Medical data representativeness:",
             ["Extremely representative", "Quite representative", "Somewhat representative", "Slightly representative", "Not representative"],
             label_visibility="collapsed",
             index=None
         )
         st.text_area("Comments (optional):", placeholder="Add comments here...")
-        st.button("Submit", type="primary", use_container_width=True)
+        st.form_submit_button("Submit", type="primary")
 
 # sidebar
 with st.sidebar:
     add_radio = st.radio(
-        "Choose a shipping method",
-        ("Standard (5-15 days)", "Express (2-5 days)")
+        "teste da sidebar",
+        ("1", "2")
     )
