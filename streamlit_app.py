@@ -1,6 +1,13 @@
 import streamlit as st
 import pandas as pd
 
+# Wide page as default 
+def wide_space_default():
+    st.set_page_config(layout="wide")
+
+wide_space_default()
+
+# -- Dataset information --
 Col1, Col2 = st.columns([2, 1])
 with Col1:
     st.title("Dataset name")
@@ -19,6 +26,7 @@ with Col1:
 
     st.markdown(purpose, unsafe_allow_html=True)
 
+# -- Real medical data information --
     st.header("Medical data used", help="The real medical data used to train the generative model")
 
     real_dataset = """
@@ -36,6 +44,7 @@ with Col1:
 
     st.markdown(real_dataset, unsafe_allow_html=True)
 
+# -- Generative model information --
     st.header("Generative model used", help="The generative model used to create the synthetic data")
 
     generative_model = """
@@ -52,7 +61,7 @@ with Col1:
 # -- Medical data representativeness form--
 with Col2:
     with st.container(border=True):
-        st.header("Medical data representativeness")
+        st.subheader("Medical data representativeness")
         st.write("How representative is the medical data used for the generation purposes?")
         representativesness = st.radio(
             "Medical data representativeness:",
@@ -60,3 +69,10 @@ with Col2:
         )
         st.text_area("Comments (optional):", placeholder="Add comments here...")
         st.button("Submit", type="primary", use_container_width=True)
+
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
