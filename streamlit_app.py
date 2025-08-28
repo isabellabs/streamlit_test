@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+
 # Wide page as default 
 def wide_space_default():
     st.set_page_config(layout="wide")
@@ -65,12 +66,14 @@ with Col2:
         st.write("How representative is the medical data used for the generation purposes?")
         representativesness = st.radio(
             "Medical data representativeness:",
-            ["Extremely representative", "Quite representative", "Somewhat representative", "Slightly representative", "Not representative"], label_visibility="collapsed"
+            ["Extremely representative", "Quite representative", "Somewhat representative", "Slightly representative", "Not representative"],
+            label_visibility="collapsed",
+            index=None
         )
         st.text_area("Comments (optional):", placeholder="Add comments here...")
         st.button("Submit", type="primary", use_container_width=True)
 
-# Using "with" notation
+# sidebar
 with st.sidebar:
     add_radio = st.radio(
         "Choose a shipping method",
