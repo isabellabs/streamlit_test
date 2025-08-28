@@ -1,0 +1,12 @@
+[theme]
+base="light"
+primaryColor="#114EBD"
+
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F1F4FC"
+
+textColor = "#121627"
+linkColor = "#114EBD"
+
+font = "Work Sans, sans serif"
+baseRadius = "0.5rem"
