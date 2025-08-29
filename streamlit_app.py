@@ -58,7 +58,7 @@ with tab1:
             | Title                        | SD20 ZSNR |
             |------------------------------|-----------|
             | Description                  | Multipurpose Stable Diffusion model trained on Retinal Fundus Images for Diabetic Retinopathy Grading and Glaucoma Classification. |
-            | Generation options available | <ul><li>Disease Intensity (one of):<ul><li>mild/moderate/severe/proliferative diabetic retinopathy</li><li>glaucomatous</li><li>no diabetic retinopathy</li><li>no Glaucoma</li></ul></li><br><li>Quality Attributes (all):<ul><li>contrast (low/medium/high)</li><li>brightness (dark/medium/bright)</li><li>color (colorless/medium/colorful)</li><li>sharpness (blurred/medium/sharp)</li><li>perceptual quality (low/medium/high)</li></ul></li><br><li>Prompt examples:<ul><li>“retinal fundus image, high contrast, colorful, sharp”</li><li>“moderate diabetic retinopathy retinal fundus image, blurred, bright”</li><li>“glaucomatous retinal fundus image, high perceptual quality, normal”</li></ul></li></ul> |
+            | Generation options available | <ul><li>Disease Intensity (one of):<ul><li>mild/moderate/severe/proliferative diabetic retinopathy</li><li>glaucomatous</li><li>no diabetic retinopathy</li><li>no glaucoma</li></ul></li><br><li>Quality Attributes (all):<ul><li>contrast (low/medium/high)</li><li>brightness (dark/medium/bright)</li><li>color (colorless/medium/colorful)</li><li>sharpness (blurred/medium/sharp)</li><li>perceptual quality (low/medium/high)</li></ul></li><br><li>Prompt examples:<ul><li>“retinal fundus image, high contrast, colorful, sharp”</li><li>“moderate diabetic retinopathy retinal fundus image, blurred, bright”</li><li>“glaucomatous retinal fundus image, high perceptual quality, normal”</li></ul></li></ul> |
             | Limitations                  | <ul><li>Some image quality descriptions conflict with each other during training.</li><li>Asking the model to generate images with specific quality characteristics might lead to unwanted behavior.</li><li>Model was trained on a large-scale image dataset which is severely unbalanced.</li><li>Images with high diabetic retinopathy levels may not be realistic.</li><li>Model only accepts English prompts with a fixed structure.</li></ul> |
             | Biases                       | <ul><li>Model is biased to the specifications/models of the machines used to acquire the images.</li><li>Model is biased to the population of the acquired images.</li><li>In some cases, image characteristics may not be aligned with real world scenarios.</li></ul> |
             """
@@ -87,7 +87,13 @@ with tab3:
 
 with tab4:
     st.badge("Step 4 of 4", color="gray")
-    
+    st.expander("Flagged images", expanded=False)
+    with st.form("Problems found form"):
+        st.header("Problems found", help="Summary of the problems found in the synthetic data")
+        st.write("Select all that apply:")
+        st.checkbox("Types of problems found","lorem ipsum", 
+        )
+        st.form_submit_button("Submit review", type="primary")
 
 
 # sidebar
