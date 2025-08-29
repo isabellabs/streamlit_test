@@ -9,7 +9,7 @@ def wide_space_default():
 wide_space_default()
 
 st.title("Dataset name")
-st.tabs(["Dataset Information", "Analyse", "Inspect", "Sumarize"])
+st.tabs(["Understand the generation", "Analyse metrics", "Inspect synthetic data", "Sumarize feedback"])
 
 # -- Dataset information --
 Col1, Col2 = st.columns([2, 1])
@@ -64,7 +64,7 @@ with Col1:
 # -- Medical data representativeness form--
 with Col2:
     with st.form("representativeness_form"):
-        st.subheader("Medical data representativeness")
+        st.subheader(":material/mystery: Medical data representativeness")
         st.write("How representative is the medical data used for the generation purposes?")
         representativeness = st.radio(
             "Medical data representativeness:",
