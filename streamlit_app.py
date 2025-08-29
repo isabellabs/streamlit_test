@@ -4,7 +4,7 @@ import pandas as pd
 
 # Wide page as default 
 def wide_space_default():
-    st.set_page_config(layout="wide")
+    st.set_page_config(page_title="Dataset name", layout="wide")
 
 wide_space_default()
 
@@ -88,13 +88,46 @@ with tab3:
 with tab4:
     st.badge("Step 4 of 4", color="gray")
     st.expander("Flagged images", expanded=False)
-    with st.form("Problems found form"):
+    with st.form("Summary_form"):
+        # --- Problems found form ---
         st.header("Problems found", help="Summary of the problems found in the synthetic data")
         st.write("Select all that apply:")
-        st.checkbox("Types of problems found","lorem ipsum", 
+        Problem1 = st.checkbox("Unrealistic morphological representation")
+        problem2 = st.checkbox("Unrealistic pathological representation")
+        problem3 = st.checkbox("Image quality issues")
+        problem4 = st.checkbox("Does not match assigned diagnosis")
+        problem5 = st.checkbox("Edge cases under-represented")
+        problem6 = st.checkbox("Low diversity")
+        problem7 = st.checkbox("Other")
+
+        # show text field only if "Other" is selected
+        other_note = ""
+        if problem7:
+            other_note = st.text_area("Describe 'Other'", placeholder="Add details here...")
+            st.write("### Debug output")
+            st.write("Other selected:", problem7)
+            st.write("Other note:", other_note)
+        else:
+            other_note = ""
+        st.text_area("Additional comments (optional):", placeholder="Add comments here...", width=500)
+
+        # --- Recommendation --- 
+        st.header("Recommendation", help="Your overall recommendation regarding the synthetic data")
+        recommendation = st.radio(
+            "Overall recommendation:",
+            ["Approve", "Approve with reservations", "Uncertain", "Reject"],
+            label_visibility="collapsed",
+            horizontal=True,
+            index=None
         )
+        
+
+         # --- Submit button ---
+
         st.form_submit_button("Submit review", type="primary")
 
+
+    st.page_link("pages/teste.py", label="Go to the teste page")
 
 # sidebar
 with st.sidebar:
